@@ -43,22 +43,12 @@ page {
   border: none;
 }
 
-.userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
-  background-size: cover;
-  text-align: left;
-  padding-left: 0;
-  margin-left: 10px;
-}
-
-.userinfo-nickname::after {
-  border: none;
-}
 
 .userinfo-nickname-wrapper {
   flex: 1;
+  margin-left: 10px;
+  font-size: 32rpx;
+  /* color: #007aff; */
 }
 
 .uploader, .tunnel {
