@@ -1,0 +1,40 @@
+/**index.wxss**/
+
+.scroll-view{
+  height: 100%;
+}
+
+.scroll-view-item{
+  background: #FFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.birthday-title{
+  margin: 0 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.birthday-donate{
+  padding: 0 20rpx;
+  background: #eceff1;
+}
+.donate-info{
+  height: 60rpx;
+  line-height: 60rpx;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.donate-info:first-child{
+  border: none;
+}
+.donate-name, .donate-money{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+.donate-name{
+  font-size: 30rpx;
+  color: #493D34;
+}
+.donate-money{
+  font-size: 28rpx;
+  color: #847B74;
+}

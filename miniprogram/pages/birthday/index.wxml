@@ -1,0 +1,10 @@
+<!-- index.wxml -->
+<view class="container">
+  <button class="author" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!userInfo.nickName}}"></button>
+  <!-- audio -->
+  <!-- <view class="uploader"></view> -->
+  <view class="musicBox">
+    <image class="music-image {{status?'roate':''}}" src="../../images/music.png" mode="aspectFit" bindtap="audioChange"></image>
+  </view>
+  <button type="primary" bindtap="confirmDonate">确定</button>
+</view>
