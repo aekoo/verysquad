@@ -1,4 +1,8 @@
 /**index.wxss**/
+page{
+  background: #FFF;
+}
+
 .musicBox{
   position: fixed;
   top: 40rpx;
@@ -9,6 +13,7 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+  z-index: 99;
 }
 .roate{
   animation: rotate 3s linear infinite;
@@ -18,44 +23,184 @@
   to{transform: rotate(360deg)}
 }
 
-
-.uploader {
-  margin-top: 40rpx;
-  padding: 0 0 0 40rpx;
-  height: auto;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-  align-items: center;
-  transition: all 300ms ease;
+.footer{
+  position: relative;
+  margin: 137rpx auto 0;
+  text-align: center;
+  letter-spacing: 40rpx;
+  font-size: 24rpx;
+  color: #FFF;
+  z-index: 2;
 }
 
-
-.uploader-text {
-  width: 100%;
-  line-height: 52px;
-  font-size: 34rpx;
-  color: #007aff;
+.one-warp{
+  position: relative;
+  width: 750rpx;
+  height: 1333rpx;
+}
+.one-warp-bj{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.one-warp-cake{
+  position: relative;
+  margin: 43rpx auto 0;
+  width: 748rpx;
+  height: 1067rpx;
+  z-index: 2;
 }
 
-.uploader-container {
-  width: 100%;
-  height: 400rpx;
-  padding: 20rpx 20rpx 20rpx 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.two-warp{
+  position: relative;
+  width: 750rpx;
+  height: 1333rpx;
+}
+.two-warp-bj{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.two-warp-cake{
+  position: absolute;
+  margin: 49rpx auto 0;
+  width: 748rpx;
+  height: 785rpx;
+  z-index: 3;
+}
+.donateBox{
+  position: relative;
+  margin: 699rpx auto 0;
+  padding-top: 243rpx;
+  width: 750rpx;
+  height: 707rpx;
+  z-index: 2;
+}
+.donateBox-bj{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 707rpx;
+}
+.donateTitle{
+  position: relative;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #737373;
+}
+.donateDesc{
+  position: relative;
+  top: 9rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #808080;
+  opacity: .46;
+}
+.donateSel{
+  position: relative;
+  padding: 0 64rpx;
+  top: 20rpx;
+}
+.donateOption{
+  display: inline-block;
+  width:284rpx;
+  height:83rpx;
+  line-height: 83rpx;
+  text-align: center;
+  font-size: 50rpx;
+  color: #FBFBFB;
+  background:#FB5E89;
+  border-radius:20rpx;
+}
+.donateOption:last-child{
+  margin-left: 52rpx;
+}
+.donateInput{
+  position: relative;
+  padding: 0 36rpx;
+  margin: 40rpx 64rpx 0;
+  background: #EEEEEE;
+  border-radius:20rpx;
+  overflow: hidden;
+}
+.donateInput input{
+  height: 83rpx;
+}
+.primary{
+  margin: 30rpx 64rpx;
+  position: relative;
+  height: 93rpx;
+  line-height: 93rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #FFF;
+  background: #5A84E7;
+  border-radius:20rpx;
 }
 
-.uploader-image {
+/* popups */
+.popups{
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 360rpx;
+  height: 100%;
+  z-index: 9;
+  animation: change .3s;
+}
+.popups-marsk{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.65;
+}
+.popups-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 600rpx;
+  height: 580rpx;
+  background: #FFF;
+  border-radius:20rpx;
+}
+.contextBox{
+  margin: 64rpx 43rpx 0;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.context{
+  text-indent: 40rpx;
+}
+.point{
+  color: #F95882;
+}
+.popups-Btn{
+  position: relative;
+  margin: 30rpx 102rpx;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #FFF;
+  background:linear-gradient(0deg,#EE4B76,#FF5E88);
+  border-radius:20rpx;
+}
+.heart{
+  position: absolute;
+  top: -12rpx;
+  width: 138rpx;
+  height: 132rpx;
+}
+
+@keyframes change{
+    from { opacity: 0;}
+    to { opacity: 1;}
 }

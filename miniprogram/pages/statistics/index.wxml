@@ -1,7 +1,7 @@
 <view class="container">
   <scroll-view class="scroll-view" scroll-y="true">
     <view class="scroll-view-item" wx:for="{{listData}}" wx:key="unique">
-      <view class="birthday-title">{{item.title}}</view>
+      <view class="birthday-title" data-birthdayid="{{item.birthdayId}}" bindtap="goPage">{{item.title}}</view>
       <view class="birthday-donate">
         <view class="donate-info" wx:for="{{item.donateData}}" wx:for-item="donate" wx:key="unique">
           <text class="donate-name">{{donate.donator}}</text>

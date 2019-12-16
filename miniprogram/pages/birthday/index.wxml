@@ -2,9 +2,53 @@
 <view class="container">
   <button class="author" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!userInfo.nickName}}"></button>
   <!-- audio -->
-  <!-- <view class="uploader"></view> -->
-  <view class="musicBox">
-    <image class="music-image {{status?'roate':''}}" src="../../images/music.png" mode="aspectFit" bindtap="audioChange"></image>
+  <view class="musicBox" bindtap="audioChange">
+    <image class="music-image {{status?'roate':''}}" src="../../images/music.png" mode="aspectFit"></image>
   </view>
-  <button type="primary" bindtap="confirmDonate">确定</button>
+  <!-- one warp -->
+  <view class="one-warp" wx:if="{{showPopups}}">
+    <image class="one-warp-bj" src="../../images/one-warp-bj.png" mode="aspectFill"></image>
+    <image class="one-warp-cake" src="../../images/one-warp-cake.png" mode="aspectFill"></image>
+    <view class="footer">非同一班公益委员会</view>
+  </view>
+  <!-- two warp -->
+  <view class="two-warp" wx:else>
+    <image class="two-warp-bj" src="../../images/two-warp-bj.png" mode="aspectFill"></image>
+    <image class="two-warp-cake" src="../../images/two-warp-cake.png" mode="aspectFill"></image>
+    <view class="donateBox">
+      <image class="donateBox-bj" src="../../images/two-warp-sprite.png" mode="aspectFill"></image>
+      <view class="donateTitle">我要捐献</view>
+      <view class="donateDesc">选择您要捐献的金额</view>
+      <view class="donateSel">
+        <view class="donateOption" bindtap="setMoney1">￥1000</view>
+        <view class="donateOption" bindtap="setMoney2">￥2000</view>
+      </view>
+      <view class="donateInput">
+        <input type="number" placeholder="点击输入自定义金额" value="{{money}}" bindchange="setMoney" />
+      </view>
+      <view class="primary" bindtap="confirmDonate">立即捐赠</view>
+    </view>
+  </view>
+  <!-- popups -->
+  <view class="popups" wx:if="{{showPopups}}">
+    <view class="popups-marsk"></view>
+    <view class="popups-container">
+      <view class="contextBox">
+        <view class="call">
+          亲爱的
+          <text class="point">{{birthman}}</text>
+          同学：
+        </view>
+        <view class="context">
+          非同一班公益委员会衷心祝愿你生日快乐，青春永驻！在这个有着特别意义和值得纪念的日子里，希望你能为班级公益
+          <text class="point">献上一份爱心</text>
+          ，为践行我们的社会责任奉上一份力量！
+        </view>
+      </view>
+      <view class="popups-Btn" bindtap="scitch">
+        <text>收下祝福 传递温暖</text>
+        <image class="heart" src="../../images/heart.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
 </view>

@@ -8,6 +8,10 @@ Page({
     logged: false,
     listData: []
   },
+
+  goPage(e) {
+    wx.navigateTo({ url: '/pages/birthday/index?birthdayId=' + e.target.dataset.birthdayid });
+  },
   onLoad: function () {
     if (!wx.cloud) {
       wx.redirectTo({

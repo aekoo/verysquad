@@ -2,12 +2,28 @@
 const app = getApp()
 const db = wx.cloud.database()
 
+
 Page({
   data: {
     userInfo: {},
     logged: false,
-    status: false,
-    queryResult: '',
+    status: true,
+    showPopups: false,
+    birthman: '--',
+    money: ''
+  },
+  scitch() {
+    this.setData({ showPopups: false })
+  },
+
+  setMoney(e) {
+    this.setData({ money: e.detail.value });
+  },
+  setMoney1() {
+    this.setData({ money: 1000 });
+  },
+  setMoney2() {
+    this.setData({ money: 2000 });
   },
   audioChange() {
     if (this.data.status) {
@@ -24,12 +40,17 @@ Page({
   },
   onReady: function () {
     this.innerAudioContext = wx.createInnerAudioContext()
-    this.innerAudioContext.src = encodeURI('http://antiserver.kuwo.cn/anti.s?rid=MUSIC_54761734&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3')
-    // this.innerAudioContext.autoplay = true
+    // this.innerAudioContext.src = encodeURI('http://antiserver.kuwo.cn/anti.s?rid=MUSIC_54761734&response=res&format=mp3|aac&type=convert_url&br=128kmp3&agent=iPhone&callback=getlink&jpcallback=getlink.mp3')
+    this.innerAudioContext.src = encodeURI('cloud://prod-du7tj.7072-prod-du7tj-1300914810/audio/birthday.mp3')
+    this.innerAudioContext.autoplay = true
     this.innerAudioContext.loop = true
+  },
+  onUnload: function () {
+    this.innerAudioContext.destroy()
   },
   onLoad: function (props) {
     const { birthdayId } = props;
+    app.globalData.birthdayId = birthdayId;
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
@@ -84,7 +105,9 @@ Page({
       _id: birthdayId
     }).get({
       success: res => {
-        this.setData({ queryResult: res.data[0] })
+        const { birthdayId, birthday, birthman } = res.data[0];
+        this.setData({ showPopups: true, birthdayId, birthday, birthman })
+        // this.audioChange();
         console.log('[数据库] [查询记录] 成功: ', res)
       },
       fail: err => {
@@ -95,11 +118,8 @@ Page({
   },
   // 确认捐赠
   confirmDonate: function () {
-    const { userInfo: { nickName }, queryResult: { _id, birthday, birthman } } = this.data;
-
-    const birthdayId = _id;
-    const money = 1000;
-
+    const { userInfo: { nickName }, birthdayId, birthday, birthman, money } = this.data;
+    if (!money) return wx.showToast({ icon: 'none', title: '请选择或输入捐赠金额', })
 
     db.collection('donation').where({
       birthdayId
@@ -143,4 +163,13 @@ Page({
 
   },
 
+  onShareAppMessage(options) {
+    console.log(app.globalData.birthdayId);
+    
+    return {
+      title: "非同一班公益委员会祝你生日快乐~",
+      path: '/pages/birthday/index?birthdayId=' + app.globalData.birthdayId,
+      imageUrl: '../../images/share.png',
+    }
+  }
 })
